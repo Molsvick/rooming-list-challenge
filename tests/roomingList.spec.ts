@@ -88,8 +88,8 @@ test.describe('Rooming List Page Tests', () => {
         // 1. Click on the main 'Filters' button to open the modal
         await roomingListPage.openFiltersModal();
 
-        // 2. Disable the default 'Active' option by clicking it and enable the 'Cancelled' option.
-        await filterModal.clickActiveCheckbox();
+        // 2. Disable the default 'Closed' option by clicking it and enable the 'Cancelled' option.
+        await filterModal.clickClosedCheckbox();
         await filterModal.clickCancelledCheckbox();
 
         // 3. Click the 'Save' button inside the modal to apply the filters

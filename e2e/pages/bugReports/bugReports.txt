@@ -1,0 +1,398 @@
+--- BUG REPORT START ---
+*************************************************************************************************************************************
+[Incorrect default checks]
+[Description]
+**Default filter option 'Closed' is pre-selected upon opening filter modal.**
+
+**Bug ID:** [01]
+**Reported by:** [Santiago Lloret]
+**Date Reported:** 2025-07-14
+**Priority:**
+    [ ] Critical - Blocks essential functionality.
+    [ ] High - Significantly impacts core functionality.
+    [ ] Medium - Affects secondary features or is a noticeable aesthetic issue.
+    [x] Low - Minor aesthetic issue, minor usability problem, or enhancement.
+**Severity:**
+    [ ] Blocker - Impedes continuation of work or use of the application.
+    [ ] Critical - Data loss, severe security flaw, key functionality not working.
+    [ ] Major - Important functionality does not meet requirements.
+    [x] Minor - Small, but annoying problem.
+    [ ] Trivial - Typos, minor aesthetic issues.
+
+---
+
+### Problem Description
+
+When the "Filters" modal is opened on the 'Rooming List Management: Events' page, the 'Closed' 
+filter option is unexpectedly pre-selected by default.
+
+---
+
+### Steps to Reproduce
+
+1.  Go to the application's initial page (Rooming List Management: Events).
+2.  Click the "Filters" button next to the search bar.
+3.  Observe the displayed filter modal.
+
+---
+
+### Expected Behavior
+
+Upon opening the filter modal, all filter checkboxes ('Active', 'Closed', 'Cancelled') should be 
+**unchecked** by default, allowing the user to make a fresh selection.
+
+---
+
+### Actual Behavior (Bug)
+
+The 'Closed' filter checkbox is found to be **checked** by default when the filter modal opens, 
+as shown in the attached screenshot.
+
+---
+
+### Evidence (Screenshots / Videos / Logs)
+
+* **Screenshot:** See attached file "CheckDefault.png" which highlights the pre-selected 
+'Closed' checkbox.
+
+---
+
+### Additional Information
+
+* **Environment:**
+    * **Browser/Version:** Firefox and Chrome
+    * **Operating System:** [Windows 10]
+    * **Device:** Desktop
+    * **Affected URL/Endpoint:** [`http://localhost:3000`]
+* **Application Version/Build:** [e.g., v1.0.0, dev build]
+* **Notes/Context:** This behavior deviates from standard UI expectations where filter options are typically unselected by default 
+to avoid unintended filtering. It requires an extra click from the user to reset.
+*************************************************************************************************************************************
+--- BUG REPORT END ---
+
+
+
+
+
+--- BUG REPORT START ---
+*************************************************************************************************************************************
+[The filter is not saved]
+[Description]
+**Filter selections are not persisted upon re-opening filter modal.**
+
+**Bug ID:** [02]
+**Reported by:** [Santiago Lloret]
+**Date Reported:** 2025-07-14
+**Priority:** (Select one)
+    [ ] Critical - Blocks essential functionality.
+    [x] High - Impacts significantly core functionality, as filter settings aren't retained.
+    [ ] Medium - Affects secondary features or is a noticeable aesthetic issue.
+    [ ] Low - Minor aesthetic issue, minor usability problem, or enhancement.
+**Severity:** (Select one)
+    [ ] Blocker - Impedes continuation of work or use of the application.
+    [ ] Critical - Data loss, severe security flaw, key functionality not working.
+    [x] Major - Important functionality (filtering) does not meet requirements.
+    [ ] Minor - Small, but annoying problem.
+    [ ] Trivial - Typos, minor aesthetic issues.
+
+---
+
+### Problem Description
+
+After making selections in the filter modal and saving them, the chosen filter options are not retained 
+when the filter modal is re-opened. The checkboxes revert to their initial default state.
+
+---
+
+### Steps to Reproduce
+
+1.  Go to the application's initial "Rooming List Management: Events" page.
+2.  Click the "Filters" button to open the filter modal.
+3.  Modify the filter selections (e.g., uncheck 'Closed' and check 'Cancelled').
+4.  Click the "Save" button to apply the changes and close the modal.
+5.  Re-open the filter modal by clicking the "Filters" button again.
+6.  Observe the state of the checkboxes in the modal.
+
+---
+
+### Expected Behavior
+
+Upon re-opening the filter modal, the previously selected filter options 
+(e.g., 'Cancelled' checked, 'Closed' unchecked) should **remain selected**, 
+reflecting the last saved state. The list of events on the main page should also remain filtered by these selections.
+
+---
+
+### Actual Behavior (Bug)
+
+When the filter modal is re-opened, the filter checkboxes revert to their **initial default state** 
+(e.g., 'Closed' is checked, 'Active' and 'Cancelled' are unchecked), despite having saved different selections 
+previously. The main event list might appear correctly filtered, but the modal itself does not reflect the applied filters.
+
+---
+
+### Evidence (Screenshots / Videos / Logs)
+
+* **Gif:** See attached file "FilterSaveError.gif" which shows the filter without saving previous checks.
+
+---
+
+### Additional Information
+
+* **Environment:**
+    * **Browser/Version:** Firefox and Chrome
+    * **Operating System:** [Windows 10]
+    * **Device:** Desktop
+    * **Affected URL/Endpoint:** [`http://localhost:3000`]
+* **Application Version/Build:** [e.g., v1.0.0, dev build]
+* **Notes/Context:** This bug impacts user experience and requires users to re-apply filter selections every time 
+they want to adjust filters or verify their current settings. While the list might *appear* filtered, the UI feedback 
+in the modal is incorrect. This is different from the bug where 'Closed' is initially selected by default (a separate issue).
+*************************************************************************************************************************************
+--- BUG REPORT END ---
+
+
+
+
+--- BUG REPORT START ---
+*************************************************************************************************************************************
+[Spacing in Filter modal]
+[Description]
+**Filter Modal has excessive vertical spacing from "Filters" button.**
+
+**Bug ID:** [03]
+**Reported by:** [Santiago Lloret]
+**Date Reported:** 2025-07-14
+**Priority:** (Select one)
+    [ ] Critical - Blocks essential functionality.
+    [ ] High - Impacts significantly core functionality.
+    [x] Medium - Affects secondary features or is a noticeable aesthetic issue.
+    [ ] Low - Minor aesthetic issue, minor usability problem, or enhancement.
+**Severity:** (Select one)
+    [ ] Blocker - Impedes continuation of work or use of the application.
+    [ ] Critical - Data loss, severe security flaw, key functionality not working.
+    [ ] Major - Important functionality does not meet requirements.
+    [x] Minor - Small, but annoying problem.
+    [ ] Trivial - Typos, minor aesthetic issues.
+
+---
+
+### Problem Description
+
+The filter modal, when opened, appears with a noticeable and excessive vertical gap between its 
+top edge and the bottom edge of the "Filters" button.
+
+---
+
+### Steps to Reproduce
+
+1.  Go to the application's initial "Rooming List Management: Events" page.
+2.  Click the "Filters" button next to the search bar.
+3.  Observe the vertical positioning of the opened filter modal relative to the "Filters" button.
+
+---
+
+### Expected Behavior
+
+The filter modal should appear directly adjacent to or with minimal, intended spacing (e.g., 8-12px) 
+below the "Filters" button, aligning closely to indicate its contextual relationship with the button.
+
+---
+
+### Actual Behavior (Bug)
+
+As shown in the attached screenshot, the filter modal is positioned significantly further down from the 
+"Filters" button than expected, creating an unappealing visual gap.
+
+---
+
+### Evidence (Screenshots / Videos / Logs)
+
+* **Screenshot:** See attached file "modalSpace.png" which illustrates the large gap between the "Filters" 
+button and the filter modal.
+
+
+---
+
+### Additional Information
+
+* **Environment:**
+    * **Browser/Version:** Firefox and Chrome
+    * **Operating System:** [Windows 10]
+    * **Device:** Desktop
+    * **Affected URL/Endpoint:** [`http://localhost:3000`]
+* **Application Version/Build:** [e.g., v1.0.0, dev build]
+* **Notes/Context:** This is primarily an aesthetic and minor usability issue. It might be related to incorrect 
+CSS `margin`, `padding`, or `position` values on either the button or the modal elements. It does not block functionality 
+but impacts the overall polish of the UI.
+*************************************************************************************************************************************
+--- BUG REPORT END ---
+
+
+
+
+
+
+--- BUG REPORT START ---
+*************************************************************************************************************************************
+[Wrong scroll indicator behaviour]
+[Description]
+**Horizontal scroll indicator dots misalign or behave inconsistently with current page.**
+
+**Bug ID:** [04]
+**Reported by:** [Santiago Lloret]
+**Date Reported:** 2025-07-14
+**Priority:** (Select one)
+    [ ] Critical - Blocks essential functionality.
+    [ ] High - Impacts significantly core functionality, as filter settings aren't retained.
+    [x] Medium - Affects secondary features or is a noticeable aesthetic issue.
+    [ ] Low - Minor aesthetic issue, minor usability problem, or enhancement.
+**Severity:** (Select one)
+    [ ] Blocker - Impedes continuation of work or use of the application.
+    [ ] Critical - Data loss, severe security flaw, key functionality not working.
+    [ ] Major - Important functionality (filtering) does not meet requirements.
+    [x] Minor - Small, but annoying problem.
+    [ ] Trivial - Typos, minor aesthetic issues.
+
+---
+
+### Problem Description
+
+The visual indicator dots (or "pages") on the horizontal scroll bar for event card groups do not consistently 
+align or accurately represent the current "page" or position within the scrolled content, especially when there 
+are more than four pages/sections of event cards.
+
+---
+
+### Steps to Reproduce
+
+1.  Go to the application's initial "Rooming List Management: Events" page.
+2.  Locate an event group with multiple horizontal "pages" of event cards (e.g., "Austin City Limits").
+3.  Click the right navigation arrow (scroll button) for this group **four times** consecutively to navigate through the event card "pages."
+4.  Observe the behavior and alignment of the scroll indicator dots at the bottom of the event card section.
+
+---
+
+### Expected Behavior
+
+The scroll indicator bar should accurately reflect the current position or "page" of the horizontal scroll. The active 
+indicator dot should precisely align with and highlight the corresponding white space or segment representing the currently 
+viewed set of event cards. Each click of the navigation arrow should clearly advance the active indicator to the next segment.
+
+---
+
+### Actual Behavior (Bug)
+
+As demonstrated in the attached screenshot, the active indicator dot (the dark gray segment) on the horizontal scroll bar does not
+precisely land on or highlight the white space segment representative of the current "page" of event cards. Its movement appears
+istent or misaligned, making it difficult for the user to understand their current position within the scrolled content.
+
+---
+
+### Evidence (Screenshots / Videos / Logs)
+
+* **Screenshot:** See attached file "wrongBarBehaviour.png" which shows the misaligned active indicator dot on the horizontal 
+scroll bar, failing to land cleanly on one of the white segments.
+
+
+---
+
+### Additional Information
+
+* **Environment:**
+    * **Browser/Version:** Firefox and Chrome
+    * **Operating System:** [Windows 10]
+    * **Device:** Desktop
+    * **Affected URL/Endpoint:** [`http://localhost:3000`]
+* **Application Version/Build:** [e.g., v1.0.0, dev build]
+* **Notes/Context:** This bug is primarily an aesthetic and usability issue. It doesn't block core functionality, but it degrades 
+the user experience by providing confusing visual feedback regarding navigation progress. It might be related to incorrect calculations 
+for scroll position mapping to indicator segments, or issues with the indicator's CSS positioning/animation.
+*************************************************************************************************************************************
+--- BUG REPORT END ---
+
+
+
+
+
+
+
+--- BUG REPORT START ---
+*************************************************************************************************************************************
+[Wrong search behaviour]
+**Non-existent search query breaks page, displays "No rooming lists found" with "Import Data" prompt.**
+
+**Bug ID:** [05]
+**Reported by:** [Santiago Lloret]
+**Date Reported:** 2025-07-14
+**Priority:** (Select one)
+    [x] Critical - Blocks essential functionality.
+    [ ] High - Impacts significantly core functionality.
+    [ ] Medium - Affects secondary features or is a noticeable aesthetic issue.
+    [ ] Low - Minor aesthetic issue, minor usability problem, or enhancement.
+**Severity:** (Select one)
+    [x] Blocker - Impedes continuation of work or use of the application, requiring page reload.
+    [ ] Critical - Data loss, severe security flaw, key functionality not working.
+    [ ] Major - Important functionality does not meet requirements.
+    [ ] Minor - Small, but annoying problem.
+    [ ] Trivial - Typos, minor aesthetic issues.
+
+---
+
+### Problem Description
+
+When a search query yields no results, the application displays a "No rooming lists found" message along 
+with an "Import Data" button, as if the application started with no data. This incorrect 
+state forces the user to manually refresh the page to regain normal search functionality.
+
+---
+
+### Steps to Reproduce
+
+1.  Go to the application's initial "Rooming List Management: Events" page.
+2.  In the search input field, type a non-existent search term (e.g., 'zzzzz').
+3.  Press Enter or wait for the search to execute.
+4.  Observe the page content.
+
+---
+
+### Expected Behavior
+
+When a search query yields no results, the application should:
+* Display a clear "No results found" message (e.g., "No events match your search criteria").
+* Keep the search bar visible and functional.
+* Allow the user to modify the search query or clear it to return to the full list of events without needing a page reload.
+* **Should NOT** display an "Import Data" prompt, as this is irrelevant to a search with no results and misrepresents the application's data state.
+
+---
+
+### Actual Behavior (Bug)
+
+As shown in the attached screenshot, instead of a "no results" message specific to the search, the page effectively 
+"breaks" by displaying the initial "No rooming lists found" screen with an "Import Data" button. This indicates a loss 
+of the current application state, making it impossible to perform new searches or interact with filters without manually 
+refreshing the browser.
+
+---
+
+### Evidence (Screenshots / Videos / Logs)
+
+* **Gif:** See attached file "wrongSearch.gif" which displays the "No rooming lists found" message and "Import Data" button after a non-existent search.
+
+
+
+---
+
+### Additional Information
+
+* **Environment:**
+    * **Browser/Version:** Firefox and Chrome
+    * **Operating System:** [Windows 10]
+    * **Device:** Desktop
+    * **Affected URL/Endpoint:** [`http://localhost:3000`]
+* **Application Version/Build:** [e.g., v1.0.0, dev build]
+* **Notes/Context:** This is a critical usability defect. Users cannot recover from a "no results" search without a hard 
+refresh, severely impacting the search feature's reliability and overall user experience. It suggests that the application's 
+state management or routing might be flawed when handling empty search results.
+*************************************************************************************************************************************
+--- BUG REPORT END ---
