@@ -43,7 +43,7 @@ export class RoomingListPage extends BasePage {
    * Clicks the 'Filters' button to open the filter modal.
    */
   async openFiltersModal(): Promise<void> {
-    await expect(this.filtersButton).toBeEnabled(); 
+    await expect(this.filtersButton).toBeEnabled();
     await this.filtersButton.click();
     await expect(this.filterModal.modalContainer).toBeVisible();
   }
@@ -66,7 +66,7 @@ export class RoomingListPage extends BasePage {
 
   async getCardRFPName(cardLocator: Locator): Promise<string> {
     const rawName = await cardLocator.locator('.sc-lpbaSe.guyUPL').textContent();
-    return this.cleanEventName(rawName); 
+    return this.cleanEventName(rawName);
   }
 
 
@@ -102,16 +102,20 @@ export class RoomingListPage extends BasePage {
 
     for (let j = 0; j < detailElements.length; j++) {
       const detailDiv = detailElements[j];
-      const fullText = await detailDiv.textContent();
-      const labelSpan = detailDiv.locator('span.sc-fbguzk.exukee');
-      const labelText = await labelSpan.textContent();
-      const actualValue = fullText?.replace(labelText || '', '').trim() || '[Empty Value]';
 
-      // Map labels to keys for the returned object
+      const labelSpan = detailDiv.locator('span.sc-fbguzk.exukee').first();
+
+      const fullText = await detailDiv.textContent();
+      const labelText = await labelSpan.textContent();
+
+
+      let actualValue = fullText?.replace(labelText || '', '').trim() || '[Empty Value]';
+
+
       if (detailLabels[j] === 'Phone') details.phone = actualValue;
-      if (detailLabels[j] === 'Hotel ID') details.hotelId = actualValue;
-      if (detailLabels[j] === 'Check-in') details.checkIn = actualValue;
-      if (detailLabels[j] === 'Check-out') details.checkOut = actualValue;
+      else if (detailLabels[j] === 'Hotel ID') details.hotelId = actualValue;
+      else if (detailLabels[j] === 'Check-in') details.checkIn = actualValue;
+      else if (detailLabels[j] === 'Check-out') details.checkOut = actualValue;
     }
     return details as { phone: string, hotelId: string, checkIn: string, checkOut: string };
   }

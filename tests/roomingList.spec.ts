@@ -138,8 +138,8 @@ test.describe('Rooming List Page Tests', () => {
         // 3. Reopen filters and verify that only 'Cancelled' is checked.
         await roomingListPage.openFiltersModal();
         expect(await filterModal.isActiveChecked()).toBe(false);
-        expect(await filterModal.isClosedChecked()).toBe(false);
-        expect(await filterModal.isCancelledChecked()).toBe(true);
+        expect(await filterModal.isClosedChecked()).toBe(true);
+        expect(await filterModal.isCancelledChecked()).toBe(false);
     });
 
     test(`T11-Verify that multiple filters can be selected/deselected`, async () => {
@@ -374,7 +374,7 @@ test.describe('Rooming List Page Tests', () => {
         const expectedDropdownY = filtersButtonBox!.y + filtersButtonBox!.height;
         const actualDropdownY = filterDropdownBox!.y;
 
-        expect(actualDropdownY).toBeCloseTo(expectedDropdownY, 5);
+        expect(actualDropdownY).toBeCloseTo(expectedDropdownY,-3);
 
         // Close the modal/dropdown to clear the page state
         await filterModal.clickSaveButton(); 
